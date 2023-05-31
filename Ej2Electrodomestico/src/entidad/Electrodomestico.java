@@ -12,28 +12,30 @@ import java.util.Scanner;
  * @author monte
  */
 public class Electrodomestico {
-    protected int precio;
+    protected double precio;
     protected String color;
     protected char consumoEnergetico;
-    protected  int peso;
+    protected  double  peso;
 
     public Electrodomestico() {
+       
     }
 
-    public Electrodomestico(int precio, String color, char consumoEnergetico, int peso) {
-        this.precio = precio;
+    public Electrodomestico(double precio, String color, char consumoEnergetico, double peso) {
+        this.precio = precio+1000;
         this.color = color;
         this.consumoEnergetico = consumoEnergetico;
         this.peso = peso;
     }
 
-    public int getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
+
 
     public String getColor() {
         return color;
@@ -51,11 +53,11 @@ public class Electrodomestico {
         this.consumoEnergetico = consumoEnergetico;
     }
 
-    public int getPeso() {
+    public double getPeso() {
         return peso;
     }
 
-    public void setPeso(int peso) {
+    public void setPeso(double peso) {
         this.peso = peso;
     }
     
@@ -75,15 +77,21 @@ public class Electrodomestico {
     }
     
     private String comprobarColor(String color){
-        color=color.toLowerCase().trim();//trim elimina los espacios
-        
-        
-        if ((color.equals("blanco")) ||( color.equals("negro"))|| (color.equals("rojo")) 
-             ||  ( color.equals("azul")) ||  ( color.equals("gris"))) {
-            return this.color;
-        } else {
-            return this.color="Blanco";
+     
+      
+      String colorL = color.toLowerCase();
+        String[] colores= {"blanco", "negro", "rojo", "azul", "gris"};
+        boolean colorValido = false;
+        for (String c : colores) {
+            if (c.equals(colorL)) {
+                colorValido = true;
+                break;
+            }
         }
+        if (!colorValido) {
+           this.color = "blanco";
+        }
+        return  this.color;
     }
     
     
@@ -100,12 +108,12 @@ public class Electrodomestico {
         comprobarConsumoEnergetico(consumoEnergetico);
         System.out.println("Ingrese el peso");
         this.peso=leer.nextInt();
-        this.precio=1000;
-        
+       this.precio=1000;
+         precioFinal(); // Agregar esta línea para sumar el precio adicional
         
     }
     
-    public void precioFinal(){
+    public double precioFinal(){
         switch (consumoEnergetico) {
             case 'A':
                 this.precio+=1000;
@@ -141,7 +149,14 @@ public class Electrodomestico {
            if (this.peso>=80) {
             this.precio+=1000;
         }
+           return precio ;
     }
+    
+    
+    public double precioProducto(){
+        return  precioFinal()+1000;
+    }
+    
 
     @Override
     public String toString() {
@@ -149,8 +164,8 @@ public class Electrodomestico {
         
       sb.append("\nTelevisor \nPrecio ").append(precio);
       sb.append("\nColor ").append(color);
-      sb.append("Consumo energetico ").append(consumoEnergetico);
-      sb.append("Peso ").append(precio);
+      sb.append("\nConsumo energetico ").append(consumoEnergetico);
+      sb.append("\nPeso ").append(peso);
       
       
       return sb.toString();

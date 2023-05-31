@@ -11,12 +11,12 @@ import java.util.Scanner;
  * @author monte
  */
 public class Lavadora extends Electrodomestico{
-    private int carga;
+      private int carga;
 
     public Lavadora() {
     }
 
-    public Lavadora(int carga, int precio, String color, char consumoEnergetico, int peso) {
+    public Lavadora(int carga, double precio, String color, char consumoEnergetico, double peso) {
         super(precio, color, consumoEnergetico, peso);
         this.carga = carga;
     }
@@ -39,11 +39,12 @@ public class Lavadora extends Electrodomestico{
     }
 
     @Override
-    public void precioFinal() {
+    public double precioFinal() {
         super.precioFinal(); 
         if (this.carga>30) {
             this.precio+=500;
         }
+        return precio;
     }
 
     @Override
@@ -54,7 +55,7 @@ public class Lavadora extends Electrodomestico{
       sb.append("\nColor ").append(color);
       sb.append("\nCarga ").append(carga);
       sb.append("\nConsumo energetico ").append(consumoEnergetico);
-      sb.append("\nPeso ").append(precio);
+      sb.append("\nPeso ").append(peso);
       
       
       return sb.toString();
@@ -62,7 +63,5 @@ public class Lavadora extends Electrodomestico{
         
     }
 
-  
-    
   
 }

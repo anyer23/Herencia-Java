@@ -22,7 +22,7 @@ public class Television extends Electrodomestico{
         this.sintonizadorTDT = sintonizadorTDT;
     }
 
-    public Television(int pulgadas, boolean sintonizadorTDT, int precio, String color, char consumoEnergetico, int peso) {
+    public Television(int pulgadas, boolean sintonizadorTDT, double precio, String color, char consumoEnergetico, double peso) {
         super(precio, color, consumoEnergetico, peso);
         this.pulgadas = pulgadas;
         this.sintonizadorTDT = sintonizadorTDT;
@@ -57,29 +57,33 @@ public class Television extends Electrodomestico{
     }
 
     @Override
-    public void precioFinal() {
-        super.precioFinal(); 
+    public double precioFinal() {
+    super.precioFinal(); 
         
         if (this.pulgadas>40) {
-            this.precio*=1.30;
+           this.precio*=1.3;
+           
         }
         
         if (this.sintonizadorTDT) {
             this.precio+=500;
+          
         }
+        return this.precio;
     }
+
 
     @Override
     public String toString() {
        // return "Television "+ super.toString()+" pulgadas = "+pulgadas+" sintonizador = "+sintonizadorTDT; 
     
-        StringBuffer sb=new StringBuffer();
+        StringBuilder sb=new StringBuilder();
         
-      sb.append("\nTelevisor \nPrecio ").append(precio);
+      sb.append("\nTelevisor \nPrecio ").append(this.precio);
       sb.append("\nColor ").append(color);
-      sb.append("Pulgadas ").append(pulgadas);
-      sb.append("Consumo energetico ").append(consumoEnergetico);
-      sb.append("Peso ").append(precio);
+      sb.append("\nPulgadas ").append(pulgadas);
+      sb.append("\nConsumo energetico ").append(consumoEnergetico);
+      sb.append("\nPeso ").append(peso);
       
       
       return sb.toString();
