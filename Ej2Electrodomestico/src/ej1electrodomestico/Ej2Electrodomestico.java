@@ -25,10 +25,10 @@ public class Ej2Electrodomestico {
 
         productos.add(new Lavadora(10, 2000, "azul", 'D', 20));//4000 500 500
         productos.add(new Lavadora(20, 3000, "blanco", 'C', 30));//5100 500 600
-                                    ///    0   500  5000+1000 800 100
-        productos.add(new Television(10, true, 5000, "blanco", 'B', 10));//(7400  500 800 100 con 30")
+                                    ///    
+        productos.add(new Television(30, true, 5000, "blanco", 'F', 10));//(7400  500 800 100 con 30")
         productos.add(new Television(21, false, 2000, "azul", 'A', 10));//4600 500 1100
-
+                                        //0     0     2000+1000 1000 100
         double precioTotalElectrodomestico = 0, precioLavadora = 0, precioTv = 0;
 
         for (Electrodomestico producto : productos) {

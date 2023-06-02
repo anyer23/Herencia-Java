@@ -4,6 +4,7 @@
  */
 package entidad;
 
+
 import java.util.Scanner;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Scanner;
  * @author monte
  */
 public class Television extends Electrodomestico{
-    private int pulgadas;
+      private int pulgadas;
     private boolean sintonizadorTDT;
 
     public Television() {
@@ -58,18 +59,20 @@ public class Television extends Electrodomestico{
 
     @Override
     public double precioFinal() {
-    super.precioFinal(); 
+     super.precioFinal(); 
         
         if (this.pulgadas>40) {
            this.precio*=1.3;
            
         }
         
-        if (this.sintonizadorTDT) {
+        if (this.sintonizadorTDT==true) {
             this.precio+=500;
           
         }
         return this.precio;
+
+        
     }
 
 
@@ -77,7 +80,7 @@ public class Television extends Electrodomestico{
     public String toString() {
        // return "Television "+ super.toString()+" pulgadas = "+pulgadas+" sintonizador = "+sintonizadorTDT; 
     
-        StringBuilder sb=new StringBuilder();
+        StringBuffer sb=new StringBuffer();
         
       sb.append("\nTelevisor \nPrecio ").append(this.precio);
       sb.append("\nColor ").append(color);
@@ -88,7 +91,4 @@ public class Television extends Electrodomestico{
       
       return sb.toString();
     }
-    
-    
-    
 }
